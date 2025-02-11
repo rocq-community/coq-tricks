@@ -18,15 +18,15 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        image:
-          - 'coqorg/coq:dev'
+        coq_version:
+          - 'dev'
       fail-fast: false
     steps:
       - uses: actions/checkout@v4
       - uses: coq-community/docker-coq-action@v1
         with:
           opam_file: 'coq-tricks.opam'
-          custom_image: ${{ matrix.image }}
+          coq_version: ${{ matrix.coq_version }}
 
 
 # See also:
