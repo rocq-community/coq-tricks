@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         coq_version:
-          - 'dev'
+          - '8.20'
       fail-fast: false
     steps:
       - uses: actions/checkout@v4
