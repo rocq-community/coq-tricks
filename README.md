@@ -99,6 +99,7 @@ To build all the examples in `src/`, run `make`.
 - If you want to both run Ltac and return a `constr`, you can do so by wrapping the side effect in `let _ := match goal with _ => side_effect_tactic end in ...`. See <https://stackoverflow.com/questions/45949064/check-for-evars-in-a-tactic-that-returns-a-value/46178884#46178884> for Jason Gross's much more thorough explanation.
 - If you want `lia` to help with non-linear arithmetic involving division or modulo (or the similar `quot` and `rem`), you can do that for simple cases with `Ltac Zify.zify_post_hook ::= Z.div_mod_to_equations.` See [DivMod.v](src/DivMod.v) for an example and the [micromega documentation](https://coq.github.io/doc/master/refman/addendum/micromega.html) the full details.
 - Coq's `admit` will force you to use `Admitted`. If you want to use Qed, you can instead use `Axiom falso : False. Ltac admit := destruct falso.` This can be useful for debugging Qed errors (say, due to universes) or slow Qeds.
+- You can specialize a hypothesis using `pose (H' := H x)`, where `H` is a hypothesis of the form `forall i, ...` and `x` is a suitable instance for `i` (all that happens here is function application if you think about it). This is useful because `destruct` may not rewrite subexpressions in generalized hypothesis.
 
 ## Gallina
 
