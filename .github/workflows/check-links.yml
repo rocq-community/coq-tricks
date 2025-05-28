@@ -16,4 +16,4 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Check for broken Markdown links
-        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        uses: tcort/github-action-markdown-link-check@v1
